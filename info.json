@@ -1,0 +1,10 @@
+{
+    "name": "immersive-player",
+    "version": "0.0.1",
+    "date": "2019-05-26",
+    "title": "immersive-player",
+    "author": "palmic",
+    "dependencies": ["base"],
+    "description": "Enforce player to use automation even more by slower character actions.",
+    "factorio_version": "0.17"
+}
