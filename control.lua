@@ -1,5 +1,6 @@
 local function init_player(player)
 
+    -- game.print("init_player")
     local inventory_armor = player.get_inventory(defines.inventory.character_armor)
 
     if inventory_armor.is_empty() then
@@ -20,7 +21,13 @@ local function init_player(player)
         player.character.character_mining_speed_modifier = -0.5
     else
         player.character.character_crafting_speed_modifier = -0.4
-        player.character.character_mining_speed_modifier = -0.9
+        player.character.character_mining_speed_modifier = -0.7
+    end
+end
+
+local function on_configuration_changed(event)
+    for i, player in pairs(game.players) do
+      init_player(game.players[i])
     end
 end
 
@@ -30,7 +37,6 @@ local function on_player_joined_game(event)
 end
 
 local function on_player_armor_inventory_changed(event)
-    -- game.print("on_player_armor_inventory_changed")
     local player = game.players[event.player_index]
     init_player(player)
 end
@@ -42,6 +48,7 @@ local function on_research_finished(event)
     end
 end
 
+script.on_configuration_changed(on_configuration_changed)
 script.on_event(defines.events.on_player_joined_game, on_player_joined_game)
 script.on_event(defines.events.on_player_armor_inventory_changed, on_player_armor_inventory_changed)
 script.on_event(defines.events.on_research_finished, on_research_finished)
