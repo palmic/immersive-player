@@ -8,6 +8,7 @@ function toggle_view_map(player, show)
 end
 function toggle_view_quickbar(player, show)
     toggle_view(player, "show_quickbar", show)
+    toggle_view(player, "show_shortcut_bar", show)
 end
 
 local function init_player(player)
