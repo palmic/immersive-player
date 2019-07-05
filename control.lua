@@ -8,6 +8,8 @@ function toggle_view_map(player, show)
 end
 function toggle_view_quickbar(player, show)
     toggle_view(player, "show_quickbar", show)
+end
+function toggle_view_shortcut_bar(player, show)
     toggle_view(player, "show_shortcut_bar", show)
 end
 
@@ -20,19 +22,23 @@ local function init_player(player)
         player.character.character_running_speed_modifier = -0.4
         toggle_view_map(player, false)
         toggle_view_quickbar(player, false)
+        toggle_view_shortcut_bar(player, false)
     else
         local inventory_armor_content = inventory_armor.get_contents()
         if inventory_armor_content["light-armor"] ~= nil then
             toggle_view_map(player, true)
             toggle_view_quickbar(player, true)
+            toggle_view_shortcut_bar(player, false)
             player.character.character_running_speed_modifier = -0.3
         elseif inventory_armor_content["heavy-armor"] ~= nil then
             toggle_view_map(player, true)
             toggle_view_quickbar(player, true)
+            toggle_view_shortcut_bar(player, false)
             player.character.character_running_speed_modifier = -0.1
         else
             toggle_view_map(player, true)
             toggle_view_quickbar(player, true)
+            toggle_view_shortcut_bar(player, true)
             player.character.character_running_speed_modifier = 0.1
         end
     end
