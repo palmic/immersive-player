@@ -48,7 +48,7 @@ local function init_player(player)
         player.character.character_mining_speed_modifier = -0.5
     else
         player.character.character_crafting_speed_modifier = -0.4
-        player.character.character_mining_speed_modifier = -0.7
+        player.character.character_mining_speed_modifier = -0.8
     end
 end
 
