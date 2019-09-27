@@ -1,7 +1,7 @@
 {
     "name": "immersive-player",
-    "version": "0.0.6",
-    "date": "2019-07-05",
+    "version": "0.0.7",
+    "date": "2019-09-28",
     "title": "immersive-player",
     "author": "palmic",
     "dependencies": ["base"],
