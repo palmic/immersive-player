@@ -16,9 +16,16 @@ end
 local function init_player(player)
 
     -- game.print("init_player")
+
+    if player.character == nil then return end
+
     local inventory_armor = player.get_inventory(defines.inventory.character_armor)
 
-    if inventory_armor.is_empty() then
+    -- if inventory_armor == nil then
+    --     game.print("nil inventory_armor")
+    -- end
+
+    if inventory_armor == nil or inventory_armor.is_empty() then
         player.character.character_running_speed_modifier = -0.4
         toggle_view_map(player, false)
         toggle_view_quickbar(player, false)
@@ -48,7 +55,7 @@ local function init_player(player)
         player.character.character_mining_speed_modifier = -0.5
     else
         player.character.character_crafting_speed_modifier = -0.4
-        player.character.character_mining_speed_modifier = -0.8
+        player.character.character_mining_speed_modifier = -0.9
     end
 end
 
@@ -75,7 +82,9 @@ local function on_research_finished(event)
     end
 end
 
-script.on_configuration_changed(on_configuration_changed)
+-- script.on_event(defines.events.on_tick, on_configuration_changed)
 script.on_event(defines.events.on_player_joined_game, on_player_joined_game)
+script.on_event(defines.events.on_cutscene_cancelled, on_configuration_changed)
+script.on_configuration_changed(on_configuration_changed)
 script.on_event(defines.events.on_player_armor_inventory_changed, on_player_armor_inventory_changed)
 script.on_event(defines.events.on_research_finished, on_research_finished)
